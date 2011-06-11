@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @activist.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @activist.last_name %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @activist.age %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @activist.phone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @activist.email %>
+</p>
+
+<h2>Interests:</h2>
+<% @activist.interests.each do |interest| %>
+  <tr>
+    <%= link_to interest.name, interest %>
+  </tr>
+<% end %>
+
+<%= link_to 'Edit', edit_activist_path(@activist) %> |
+<%= link_to 'Back', activists_path %>

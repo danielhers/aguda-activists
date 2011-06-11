@@ -1,0 +1,39 @@
+<%= nested_form_for @activist do |f| %>
+  <% if @activist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@activist.errors.count, "error") %> prohibited this activist from being saved:</h2>
+
+      <ul>
+      <% @activist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.text_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <% f.fields_for :interests %>
+  <p><%= f.link_to_add "Add Interest", :interests %></p>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

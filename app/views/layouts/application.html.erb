@@ -3,10 +3,17 @@
 <head>
   <title>AgudaActivists</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :defaults, "nested_form" %>
   <%= csrf_meta_tag %>
 </head>
-<body>
+<body style="background: #EEEEEE;"> 
+  <!-- top title table --> 
+  <table class="sffBody" td dir="rtl" width="780" valign="top" align="center"> 
+    <tr> 
+      <td><%= link_to image_tag("top_title_right.jpg"), "http://www.sf-f.org.il" %></td> 
+      <td><%= link_to image_tag("top_title_left_upper.jpg"), {:action => :index} %></td> 
+    </tr> 
+  </table>
 
 <%= yield %>
 
