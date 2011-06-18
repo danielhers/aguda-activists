@@ -31,8 +31,20 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
-  <% f.fields_for :interests %>
-  <p><%= f.link_to_add "Add Interest", :interests %></p>
+  <p>
+    <%= f.label :interests %>
+    <div class="checkbox-list">
+      <% if @interests.empty? %>
+        <i>No interests to choose from</i>
+      <% else %>
+        <% @interests.each do |interest| %>
+          <%= check_box_tag "activist[interest_ids][]", interest.id, activist_has_interest?(interest) %>
+          <%= link_to interest.name, interest %>
+          <br />
+        <% end %>
+      <% end %>
+    </div>
+  </p>
   <div class="actions">
     <%= f.submit %>
   </div>

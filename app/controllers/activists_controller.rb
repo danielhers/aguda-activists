@@ -25,6 +25,10 @@ class ActivistsController < ApplicationController
   # GET /activists/new.xml
   def new
     @activist = Activist.new
+    @interests = Interest.all
+
+    # 1 pre-built interest
+    #1.times {@activist.interests.build}
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +39,14 @@ class ActivistsController < ApplicationController
   # GET /activists/1/edit
   def edit
     @activist = Activist.find(params[:id])
+    @interests = Interest.all
   end
 
   # POST /activists
   # POST /activists.xml
   def create
     @activist = Activist.new(params[:activist])
+    @interests = Interest.all
 
     respond_to do |format|
       if @activist.save
@@ -57,6 +63,7 @@ class ActivistsController < ApplicationController
   # PUT /activists/1.xml
   def update
     @activist = Activist.find(params[:id])
+    @interests = Interest.all
 
     respond_to do |format|
       if @activist.update_attributes(params[:activist])
@@ -74,7 +81,7 @@ class ActivistsController < ApplicationController
   def destroy
     @activist = Activist.find(params[:id])
     @activist.destroy
-
+    
     respond_to do |format|
       format.html { redirect_to(activists_url) }
       format.xml  { head :ok }

@@ -25,12 +25,18 @@
   <%= @activist.email %>
 </p>
 
-<h2>Interests:</h2>
-<% @activist.interests.each do |interest| %>
-  <tr>
-    <%= link_to interest.name, interest %>
-  </tr>
-<% end %>
+<p>
+  <b>Interests:</b>
+  <% if @activist.interests.empty? %>
+    <i>None</i>
+  <% else %>
+    <ul>
+      <% @activist.interests.each do |interest| %>
+        <li> <%= link_to interest.name, interest %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_activist_path(@activist) %> |
 <%= link_to 'Back', activists_path %>

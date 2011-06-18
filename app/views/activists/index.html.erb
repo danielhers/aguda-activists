@@ -7,6 +7,7 @@
     <th>Age</th>
     <th>Phone</th>
     <th>Email</th>
+    <th>Interests</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +20,12 @@
     <td><%= activist.age %></td>
     <td><%= activist.phone %></td>
     <td><%= activist.email %></td>
+    <td>
+    <% activist.interests.each do |interest| %>
+    <%= link_to interest.name, interest %>
+    <br/ >
+    <% end %>
+    </td>
     <td><%= link_to 'Show', activist %></td>
     <td><%= link_to 'Edit', edit_activist_path(activist) %></td>
     <td><%= link_to 'Destroy', activist, :confirm => 'Are you sure?', :method => :delete %></td>

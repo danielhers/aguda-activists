@@ -12,11 +12,16 @@
 <% @interests.each do |interest| %>
   <tr>
     <td><%= interest.name %></td>
-    <td><%= interest.activists %></td>
-    <td><%= link_to 'Show', interest %></td>
-    <td><%= link_to 'Edit', edit_interest_path(interest) %></td>
-    <td><%= link_to 'Destroy', interest, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    <td>
+    <% interest.activists.each do |activist| %>
+      <%= link_to "#{activist.first_name} #{activist.last_name}", activist %>
+      <br/ >
+    <% end %>
+  </td>
+  <td><%= link_to 'Show', interest %></td>
+  <td><%= link_to 'Edit', edit_interest_path(interest) %></td>
+  <td><%= link_to 'Destroy', interest, :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
 <% end %>
 </table>
 

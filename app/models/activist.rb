@@ -2,10 +2,10 @@ require 'email_validator'
 
 class Activist < ActiveRecord::Base
   validates :first_name, :last_name, :email, :presence => true
-  validates :age,   :numericality => {:allow_nil => true,
+  validates :age,   :numericality => {:allow_blank => true,
                                       :greater_than_or_equal_to => 0}
   validates :phone, :format => {:with => /[\d-]*/},
-                    :uniqueness => {:allow_nil => true}
+                    :uniqueness => {:allow_blank => true}
   validates :email, :email => {:if => :email?},
                     :uniqueness => {:case_sensitive => false}
 

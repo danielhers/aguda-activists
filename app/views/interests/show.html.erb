@@ -7,7 +7,16 @@
 
 <p>
   <b>Activists:</b>
-  <%= @interest.activists %>
+  <% if @interest.activists.empty? %>
+    <i>None</i>
+  <% else %>
+    <ul>
+      <% @interest.activists.each do |activist| %>
+        <li> <%= link_to "#{activist.first_name} #{activist.last_name}",
+          activist %> </li>
+      <% end %>
+    </ul>
+  <% end %>
 </p>
 
 
