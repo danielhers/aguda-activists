@@ -1,4 +1,4 @@
-<%= nested_form_for @activist do |f| %>
+<%= form_for @activist do |f| %>
   <% if @activist.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@activist.errors.count, "error") %> prohibited this activist from being saved:</h2>
@@ -33,17 +33,18 @@
   </div>
   <p>
     <%= f.label :interests %>
-    <div class="checkbox-list">
+    <div id="interests">
       <% if @interests.empty? %>
         <i>No interests to choose from</i>
       <% else %>
-        <% @interests.each do |interest| %>
-          <%= check_box_tag "activist[interest_ids][]", interest.id, activist_has_interest?(interest) %>
-          <%= link_to interest.name, interest %>
-          <br />
-        <% end %>
+        <%= render :partial => 'interest', :collection => @interests %>
       <% end %>
     </div>
+  </p>
+  <p>
+    <%= link_to_function 'New Interest' do |page|
+      page[:interests].insert_html :bottom, :partial => 'new_interest', :object => Interest.new
+    end %>
   </p>
   <div class="actions">
     <%= f.submit %>

@@ -1,0 +1,6 @@
+<div class="interest">
+  <% fields_for "activist[interest_attributes][]", new_interest do |interest_Form| %>
+    <%= interest_Form.text_field :name %>
+    <%= link_to_function "Remove", "$(this).up('.interest').remove()" %>
+  <% end %>
+</div>
