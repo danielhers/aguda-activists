@@ -42,9 +42,12 @@
     </div>
   </p>
   <p>
-    <%= link_to_function 'New Interest' do |page|
-      page[:interests].insert_html :bottom, :partial => 'new_interest', :object => Interest.new
-    end %>
+    <% interest_form = escape_javascript(
+        render(:partial => 'new_interest', :object => @activist.interests.build,
+        :locals => { :activist_form => f }
+              )) %>
+    <%= link_to_function 'New Interest',
+      "$('#interests').append('#{interest_form}')" %>
   </p>
   <div class="actions">
     <%= f.submit %>
