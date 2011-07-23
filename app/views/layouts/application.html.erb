@@ -6,13 +6,27 @@
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
-<body style="background: #EEEEEE;"> 
+<body> 
   <!-- top title table --> 
   <table class="sffBody" td dir="rtl" width="780" valign="top" align="center"> 
     <tr> 
       <td><%= link_to image_tag("top_title_right.jpg"), "http://www.sf-f.org.il" %></td> 
       <td><%= link_to image_tag("top_title_left_upper.jpg"), {:action => :index} %></td> 
-    </tr> 
+    </tr>
+  </table>
+  <table class="topMenuTable" width="780" valign="top" align="center"> 
+    <tr> 
+      <td class="topMenuCell">
+        <div class="topMenuLink">
+          <%= link_to "Activists", activists_path %>
+        </div>
+      </td>
+      <td class="topMenuCell">
+        <div class="topMenuLink">
+          <%= link_to "Interests", interests_path %>
+        </div>
+      </td>
+    </tr>
   </table>
 
 <%= yield %>
