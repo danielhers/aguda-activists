@@ -31,23 +31,12 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
+  <%= f.label :interests %>
+  <div id="interests">
+    <%= render :partial => 'interest', :collection => @interests %>
+  </div>
   <p>
-    <%= f.label :interests %>
-    <div id="interests">
-      <% if @interests.empty? %>
-        <i>No interests to choose from</i>
-      <% else %>
-        <%= render :partial => 'interest', :collection => @interests %>
-      <% end %>
-    </div>
-  </p>
-  <p>
-    <% interest_form = escape_javascript(
-        render(:partial => 'new_interest', :object => @activist.interests.build,
-        :locals => { :activist_form => f }
-              )) %>
-    <%= link_to_function 'New Interest',
-      "$('#interests').append('#{interest_form}')" %>
+    <%= add_interest_link "New Interest", f %>
   </p>
   <div class="actions">
     <%= f.submit %>

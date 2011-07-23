@@ -1,7 +1,8 @@
-<div class="interest">
-  <%= activist_form.fields_for :interests, new_interest do |f| %>
-    <%= f.text_field :name %>
-    <%= link_to_function "Remove", "$(this).parent().remove()" %>
-    <%= f.submit %>
-  <% end %>
-</div>
+<%= pf.fields_for :interests, new_interest, :child_index => "new_interest" do |f| %>
+  <div class="interest">
+    <p>
+      <%= f.text_field :name %>
+      <%= link_to_function "Remove", "$(this).parent().remove()" %>
+    </p>
+  </div>
+<% end %>

@@ -1,3 +1,5 @@
-<%= check_box_tag "activist[interest_ids][]", interest.id, activist_has_interest?(interest) %>
-<%= link_to interest.name, interest %>
-<br />
+<div class="interest">
+  <%= check_box_tag "activist[interest_ids][]", interest.id, activist_has_interest?(interest) %>
+  <%= link_to interest.name, interest %>
+  <br />
+</div>
